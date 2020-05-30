@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:john) { Admin.new(firstname: 'John', lastname: 'Doe', email: 'john@doe.com', password: 'azerty') }
-  let(:user) { User.new(firstname: 'Alex', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty') }
+  let(:user) { User.new(firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty') }
 
   describe 'Sign Up' do
     it 'creates new user account' do
@@ -14,6 +14,12 @@ RSpec.describe User, type: :model do
       fill_in 'lastname', with: 'lastname'
       click_button 'Sign up'
       expect(page).to have_content 'Welcome! You have signed up successfully.'
+    end
+  end
+
+  describe 'Capitalization' do
+    it 'capitalizes the firstname' do
+      expect(user.firstname).to eq('Alex')
     end
   end
 

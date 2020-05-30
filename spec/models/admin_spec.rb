@@ -24,26 +24,6 @@ RSpec.describe Admin, type: :model do
       subject.email = nil
       expect(subject).to_not be_valid
     end
-
-    it 'is not valid without a firstname' do
-      subject.firstname = nil
-      expect(subject).to_not be_valid
-    end
-
-    it 'is not valid without a lastname' do
-      subject.lastname = nil
-      expect(subject).to_not be_valid
-    end
-  end
-
-  describe 'Capitalization' do
-    let(:john) { Admin.new(firstname: 'jOhN',
-                           lastname: 'doE',
-                           email: 'john@doe.com',
-                           password: 'azerty') }
-    it 'capitalizes the firstname' do
-      expect(john.firstname).to eq('John')
-    end
   end
 
   describe 'Managing' do
