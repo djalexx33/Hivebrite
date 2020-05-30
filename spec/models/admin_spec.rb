@@ -63,9 +63,9 @@ RSpec.describe Admin, type: :model do
     end
   end
 
-  describe 'Option' do
-    it 'defines the firstname as optional' do
-      expect(subject.option(user, ...))
-    end
-  end
+  # describe 'Option' do
+  #   it 'defines the firstname as optional' do
+  #     expect(subject.option(user, ...))
+  #   end
+  # end
 end
