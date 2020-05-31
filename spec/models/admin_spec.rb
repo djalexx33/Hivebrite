@@ -10,6 +10,13 @@ RSpec.describe Admin, type: :model do
                         email: 'alex.bart@gmail.com',
                         password: 'azerty') }
 
+  let(:event) { Event.new(title: 'Climate Summit 2020',
+                            date: 'Tue, 9 June 2020',
+                            description: 'a coordinated national response is more important than ever to protect from the escalating impacts of climate change.',
+                            location: 'Online Event',
+                            owner: subject,
+                            full: false) }
+
   describe 'Validations' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid
@@ -27,13 +34,6 @@ RSpec.describe Admin, type: :model do
   end
 
   describe 'Managing' do
-    let(:event) { Event.new(title: 'Climate Summit 2020',
-                            date: 'Tue, 9 June 2020',
-                            description: 'a coordinated national response is more important than ever to protect from the escalating impacts of climate change.',
-                            location: 'Online Event',
-                            owner: subject,
-                            full: false) }
-
     it 'changes the password' do
       expect(subject.change(user, 'password', 'querty')).to_not eq('azerty')
     end
@@ -43,9 +43,9 @@ RSpec.describe Admin, type: :model do
     end
   end
 
-  # describe 'Option' do
-  #   it 'defines the firstname as optional' do
-  #     expect(subject.option(user, ...))
-  #   end
-  # end
+  describe 'Read' do
+    it 'reads an Event attribute' do
+      expect(subject.read(event, 'title'))
+    end
+  end
 end
