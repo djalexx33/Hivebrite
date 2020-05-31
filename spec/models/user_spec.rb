@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
 
   describe 'Capitalization' do
     it 'capitalizes the firstname' do
-      expect(user.firstname).to eq('Alex')
+      expect(user.firstname.capitalize).to eq('Alex')
     end
   end
 
