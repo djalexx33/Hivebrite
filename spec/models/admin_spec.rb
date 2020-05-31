@@ -45,7 +45,7 @@ RSpec.describe Admin, type: :model do
 
   describe 'Read' do
     it 'reads an Event attribute' do
-      expect(subject.read(event, 'title'))
+      expect(subject.read(event, 'title')).to eq('Climate Summit 2020')
     end
   end
 end

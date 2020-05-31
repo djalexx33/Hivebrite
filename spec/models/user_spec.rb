@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
 
   describe 'Read' do
     it 'reads a custom attribute attribute' do
-      expect(user.read(user, 'Alex'))
+      expect(user.read(user, 'firstname')).to eq('AlEx')
     end
   end
 end
