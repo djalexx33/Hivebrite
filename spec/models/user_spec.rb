@@ -11,9 +11,8 @@ RSpec.describe User, type: :model do
 
   describe 'Fills' do
     it 'fills custom attributes' do
-      email = 'abcd@example.com'
-      fill_in 'email', with: email
-      expect(user).to have_content 'abcd@example.com'
+      user.email = 'abcd@example.com'
+      expect(user.email).to eq('abcd@example.com')
     end
   end
 

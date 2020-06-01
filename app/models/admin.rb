@@ -1,6 +1,5 @@
 class Admin < ApplicationRecord
-  validates :email, presence: true
-  validates :password, presence: true
+  validates :email, :password, presence: true
 
   def change(instance, arg, value)
     if instance.class == Event
@@ -17,6 +16,8 @@ class Admin < ApplicationRecord
         instance.owner = value
       when 'full'
         instance.full = value
+      when 'required'
+        instance.required = value
       else
         'not found'
       end
@@ -30,6 +31,8 @@ class Admin < ApplicationRecord
         instance.email = value
       when 'password'
         instance.password = value
+      when 'required'
+        instance.required = value
       else
         'not found'
       end
