@@ -11,7 +11,7 @@ RSpec.describe Event, type: :model do
                         full: false)
   }
 
-  describe 'Validations' do
+  describe 'Validation' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid
     end

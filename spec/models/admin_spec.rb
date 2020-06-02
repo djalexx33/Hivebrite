@@ -17,7 +17,7 @@ RSpec.describe Admin, type: :model do
                           owner: subject,
                           full: false) }
 
-  describe 'Validations' do
+  describe 'Validation' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid
     end
@@ -33,7 +33,7 @@ RSpec.describe Admin, type: :model do
     end
   end
 
-  describe 'Managing' do
+  describe 'Manage' do
     it 'changes the password' do
       expect(subject.change(user, 'password', 'querty')).to_not eq('azerty')
     end

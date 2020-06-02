@@ -9,14 +9,14 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'Fills' do
+  describe 'Filling' do
     it 'fills custom attributes' do
       user.email = 'abcd@example.com'
       expect(user.email).to eq('abcd@example.com')
     end
   end
 
-  describe 'Read' do
+  describe 'Reading' do
     it 'reads a custom attribute attribute' do
       expect(user.read(user, 'firstname')).to eq('AlEx')
     end
