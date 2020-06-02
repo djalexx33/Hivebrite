@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty') }
+  let(:user) { User.new({firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty'}) }
 
   describe 'Capitalization' do
     it 'capitalizes the firstname' do
@@ -11,14 +11,13 @@ RSpec.describe User, type: :model do
 
   describe 'Filling' do
     it 'fills custom attributes' do
-      user.email = 'abcd@example.com'
-      expect(user.email).to eq('abcd@example.com')
+      expect(user.fill('email', 'abcd@example.com')).to eq('abcd@example.com')
     end
   end
 
   describe 'Reading' do
     it 'reads a custom attribute attribute' do
-      expect(user.read(user, 'firstname')).to eq('AlEx')
+      expect(user.read_user(user, 'firstname')).to eq('AlEx')
     end
   end
 end

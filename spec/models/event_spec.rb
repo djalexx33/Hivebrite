@@ -1,14 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  let(:john) { Admin.new(firstname: 'jOhN', lastname: 'doE', email: 'john@doe.com', password: 'azerty') }
+  let(:john) { Admin.new({firstname: 'jOhN', lastname: 'doE', email: 'john@doe.com', password: 'azerty'}) }
   subject {
-    described_class.new(title: 'Climate Summit 2020',
-                        date: 'Tue, 9 June 2020',
-                        description: 'a coordinated national response is more important than ever to protect from the escalating impacts of climate change.',
-                        location: 'Online Event',
-                        owner: john,
-                        full: false)
+    described_class.new({title:'Climate Summit 2020', date: 'Tue, 9 June 2020', description: 'a coordinated national response is more important than ever to protect from the escalating impacts of climate change.', location: 'Online Event', owner: john, full: false})
   }
 
   describe 'Validation' do
