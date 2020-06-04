@@ -1,12 +1,13 @@
 class CreateUser
-  attr_reader :user
-
-  def initialize(params)
-    @user = user.new(params)
+  def self.build
+    new
   end
 
-  # CreateUser.new(params).call
-  def call
-    do_the_work(args)
+  def initialize(params)
+    @user = params[:user]
+  end
+
+  def call(user)
+    user
   end
 end
