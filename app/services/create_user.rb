@@ -1,13 +1,18 @@
 class CreateUser
-  def self.build
-    new
+  def self.call(user)
+    new(user).call
   end
 
-  def initialize(params)
-    @user = params[:user]
+  def call
+    private_methods
+    @user[:user].save
   end
 
-  def call(user)
-    user
+  private
+
+  def initialize(user)
+    @user = user
   end
+
+  attr_reader :user
 end
