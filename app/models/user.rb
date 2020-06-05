@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  validates :firstname, :lastname, :email, :password, presence: true
+  validates :firstname, :lastname, :password, presence: true
+  validates :email, presence: true, uniqueness: true
+  has_many :events, dependent: :destroy
+  has_many :event_registrations
 
   def read_user(user, arg)
     case arg

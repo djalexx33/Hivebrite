@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { User.new({firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty'}) }
+  before { user.save }
 
   describe 'Capitalization' do
     it 'capitalizes the firstname' do
@@ -44,6 +45,13 @@ RSpec.describe User, type: :model do
     it 'is not valid without a password' do
       user.password = nil
       expect(user).to_not be_valid
+    end
+  end
+
+  describe 'Email Uniquenes' do
+    let(:user1) { User.new({ firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty' }) }
+    it 'cannot use the same email multiple times' do
+      expect(user1).not_to be_valid
     end
   end
 end
