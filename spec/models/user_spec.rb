@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new({firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty'}) }
+  let(:user) { User.new({ firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty', role: 1 }) }
   before { user.save }
 
   describe 'Capitalization' do
@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid without a firstname' do
-      user.password = nil
+      user.firstname = nil
       expect(user).to_not be_valid
     end
 
@@ -52,6 +52,29 @@ RSpec.describe User, type: :model do
     let(:user1) { User.new({ firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty' }) }
     it 'cannot use the same email multiple times' do
       expect(user1).not_to be_valid
+    end
+  end
+
+  describe 'Manage' do
+    it 'changes the password' do
+      expect(admin.change_user(user, 'password', 'querty')).to_not eq('azerty')
+    end
+
+    it 'changes the title' do
+      expect(admin.change_event(event, 'title', 'Act for Climate 2020')).to_not eq('Climate Summit 2020')
+    end
+  end
+
+  describe 'Read' do
+    it 'reads an Event attribute' do
+      expect(admin.read_event(event, 'title')).to eq('Climate Summit 2020')
+    end
+  end
+
+  describe 'Option' do
+    it 'makes a custom attribute optional' do
+      expect(admin.change_user(user, 'optional', 'required')).not_to eq('optional')
+      expect(admin.change_event(event, 'optional', 'required')).not_to eq('optional')
     end
   end
 end
