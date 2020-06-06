@@ -3,12 +3,13 @@ class User < ApplicationRecord
   validates :firstname, :lastname, :password, :role, presence: true
   validates :email, presence: true, uniqueness: true
   has_many :events, dependent: :destroy
-  has_many :event_registrations, :custom_attributes
+  has_many :event_registrations
+  has_many :custom_attributes
 
-  after_initialize do
-    if self.new_record?
-      self.role ||= :standard
-    end
+  after_initialize :set_default_role, if: :new_record?
+
+  def set_default_role
+    self.role ||= :standard
   end
 
   # def read_user(user, arg)

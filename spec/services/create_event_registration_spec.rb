@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe CreateEventRegistration do
   context 'integration tests' do
-    let(:user) { Admin.new({ firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty' }) }
+    let(:user) { Admin.new(firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty') }
     before do
-      @event_registration1 = EventRegistration.new({ registration_date: 'Tue, 9 June 2020' })
+      @event_registration1 = EventRegistration.new(registration_date: 'Tue, 9 June 2020')
       # @event2 = Event.new({ date: 'Tue, 9 June 2020', description: 'a coordinated national response is more important than ever to protect from the escalating impacts of climate change.', location: 'Online Event', owner: user, full: false })
       # @event3 = Event.new({ title: 'Climate Summit 2020', description: 'a coordinated national response is more important than ever to protect from the escalating impacts of climate change.', location: 'Online Event', owner: user, full: false })
       # @event4 = Event.new({ title: 'Climate Summit 2020', date: 'Tue, 9 June 2020', location: 'Online Event', owner: user, full: false })

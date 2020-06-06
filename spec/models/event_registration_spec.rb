@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe EventRegistration, type: :model do
-  let(:user) { User.new({firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty'}) }
+  let(:user) { User.new(firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty') }
   before { user.save }
 
   describe 'Validation' do
