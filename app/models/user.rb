@@ -2,8 +2,8 @@ class User < ApplicationRecord
   enum role: [:standard, :admin]
   validates :firstname, :lastname, :password, :role, presence: true
   validates :email, presence: true, uniqueness: true
-  has_many :events, dependent: :destroy
-  has_many :event_registrations
+  has_many :registrations
+  has_many :events, through: :registrations
   has_many :custom_attributes
 
   after_initialize :set_default_role, if: :new_record?
