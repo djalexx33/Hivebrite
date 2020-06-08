@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CreateEventRegistration do
+describe SubscribeToEvent do
   context 'integration tests' do
     let(:user) { Admin.new(firstname: 'AlEx', lastname: 'Bart', email: 'alex.bart@gmail.com', password: 'azerty') }
     before do
@@ -17,7 +17,7 @@ describe CreateEventRegistration do
     end
 
     it 'creates an event in the database' do
-      expect { CreateEventRegistration.call(@valid_params) }.to change { EventRegistration.count }.by(1)
+      expect { SubscribeToEvent.call(@valid_params) }.to change { EventRegistration.count }.by(1)
     end
 
     # it 'does not create a user in the database without a title' do

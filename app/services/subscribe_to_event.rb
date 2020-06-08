@@ -1,4 +1,4 @@
-class CreateEventRegistration
+class SubscribeToEvent
   def self.call(event_registration)
     @event = Event.find(:event_id)
     new(event_registration).call
