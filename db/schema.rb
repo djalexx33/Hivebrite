@@ -10,18 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_120200) do
+ActiveRecord::Schema.define(version: 2020_06_11_172740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "event_custom_attributes", force: :cascade do |t|
+  create_table "custom_attributes", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "event_id"
+    t.bigint "registration_id"
     t.text "name"
-    t.text "value"
+    t.boolean "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_custom_attributes_on_event_id"
+    t.index ["event_id"], name: "index_custom_attributes_on_event_id"
+    t.index ["registration_id"], name: "index_custom_attributes_on_registration_id"
+    t.index ["user_id"], name: "index_custom_attributes_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -35,15 +39,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_120200) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "registration_custom_attributes", force: :cascade do |t|
-    t.bigint "registration_id"
-    t.text "name"
-    t.text "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["registration_id"], name: "index_registration_custom_attributes_on_registration_id"
-  end
-
   create_table "registrations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,15 +46,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_120200) do
     t.bigint "event_id"
     t.index ["event_id"], name: "index_registrations_on_event_id"
     t.index ["user_id"], name: "index_registrations_on_user_id"
-  end
-
-  create_table "user_custom_attributes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.text "name"
-    t.text "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_custom_attributes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_120200) do
     t.text "role"
   end
 
-  add_foreign_key "event_custom_attributes", "events"
-  add_foreign_key "registration_custom_attributes", "registrations"
-  add_foreign_key "user_custom_attributes", "users"
+  add_foreign_key "custom_attributes", "events"
+  add_foreign_key "custom_attributes", "registrations"
+  add_foreign_key "custom_attributes", "users"
 end

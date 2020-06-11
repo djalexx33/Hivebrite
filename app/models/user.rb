@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   has_many :registrations
   has_many :events, through: :registrations
-  has_many :user_custom_attributes
+  has_many :custom_attributes
 
   after_initialize :set_default_role, if: :new_record?
 
