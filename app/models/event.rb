@@ -5,4 +5,5 @@ class Event < ApplicationRecord
   has_many :registrations
   has_many :users, through: :registrations
   accepts_nested_attributes_for :registrations
+  has_many :event_custom_attributes
 end

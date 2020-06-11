@@ -1,5 +1,5 @@
 class EventRegistrationService
-  attr_reader :user
+  attr_reader :user, :event
   def initialize(user, event)
     @user = user
     @event = event
@@ -13,7 +13,9 @@ class EventRegistrationService
   private
 
   def create_registration
-    @registration = Registration.new(user: user, event: event)
+    @user = current_user
+    @event = Event.find(params[:event_id])
+    @registration = Registration.new(user: @user, event: @event)
     @registration.save
   end
 end

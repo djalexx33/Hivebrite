@@ -10,50 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_171746) do
+ActiveRecord::Schema.define(version: 2020_06_10_152009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
-    t.text "firstname"
-    t.text "lastname"
-    t.text "email"
-    t.text "password"
+  create_table "event_custom_attributes", force: :cascade do |t|
+    t.bigint "event_id"
+    t.text "name"
+    t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "custom_attributes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "event_registrations", force: :cascade do |t|
-    t.text "registration_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_custom_attributes_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
-    t.text "title"
-    t.text "date"
-    t.text "description"
-    t.text "location"
-    t.text "owner"
+    t.string "title"
+    t.date "date"
+    t.string "description"
+    t.string "location"
+    t.string "owner"
     t.boolean "full"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.text "firstname"
-    t.text "lastname"
-    t.text "email"
-    t.text "password"
+  create_table "registration_custom_attributes", force: :cascade do |t|
+    t.bigint "registration_id"
+    t.text "name"
+    t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role"
+    t.index ["registration_id"], name: "index_registration_custom_attributes_on_registration_id"
   end
 
+  create_table "registrations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_custom_attributes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "name"
+    t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_custom_attributes_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "role"
+  end
+
+  add_foreign_key "event_custom_attributes", "events"
+  add_foreign_key "registration_custom_attributes", "registrations"
+  add_foreign_key "user_custom_attributes", "users"
 end

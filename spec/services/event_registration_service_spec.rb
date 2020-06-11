@@ -51,13 +51,13 @@ describe EventRegistrationService do
                         location: 'Online Event',
                         owner: user
 
-    @valid_params = { event: @event1 }
-    @invalid_params = { event: @event2 } ||
-                      { event: @event3 } ||
-                      { event: @event4 } ||
-                      { event: @event5 } ||
-                      { event: @event6 } ||
-                      { event: @event7 }
+    @valid_params = { user: user, event: @event1 }
+    @invalid_params = { user: user, event: @event2 } ||
+                      { user: user, event: @event3 } ||
+                      { user: user, event: @event4 } ||
+                      { user: user, event: @event5 } ||
+                      { user: user, event: @event6 } ||
+                      { user: user, event: @event7 }
   end
 
   it 'creates an event in the database if the user is an admin' do

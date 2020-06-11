@@ -1,5 +1,5 @@
 class Registration < ApplicationRecord
   belongs_to :user
   belongs_to :event
-  accepts_nested_attributes_for :user
+  has_many :registration_custom_attributes
 end

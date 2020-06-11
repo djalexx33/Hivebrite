@@ -6,22 +6,22 @@ describe UserSignupService do
                       lastname: 'Bart',
                       email: 'alex.bart@gmail.com',
                       password: 'azerty',
-                      role: 1
+                      role: 'admin'
 
     @user2 = User.new lastname: 'Bart',
                       email: 'alex.bart@gmail.com',
                       password: 'azerty',
-                      role: 1
+                      role: 'admin'
 
     @user3 = User.new firstname: 'AlEx',
                       lastname: 'Bart',
                       password: 'azerty',
-                      role: 1
+                      role: 'admin'
 
     @user4 = User.new firstname: 'AlEx',
                       lastname: 'Bart',
                       email: 'alex.bart@gmail.com',
-                      role: 1
+                      role: 'admin'
 
     @user5 = User.new firstname: 'AlEx',
                       lastname: 'Bart',
