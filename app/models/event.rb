@@ -3,5 +3,5 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :registrations
   has_many :users, through: :registrations
-  has_many :custom_attributes
+  has_many :custom_attributes, as: :customizable
 end

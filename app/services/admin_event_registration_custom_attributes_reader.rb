@@ -1,0 +1,2 @@
+class AdminEventRegistrationCustomAttributesReader
+end

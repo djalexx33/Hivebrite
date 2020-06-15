@@ -1,0 +1,2 @@
+class SpecificEventCustomAttributesManager
+end
