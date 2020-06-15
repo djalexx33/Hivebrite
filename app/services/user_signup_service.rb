@@ -5,8 +5,8 @@ class UserSignupService
   end
 
   def call
-    # create user
     create_user
+    send_admin_mail
   end
 
   private
@@ -14,5 +14,9 @@ class UserSignupService
   def create_user
     User.create(user[user])
     user[:user].save
+  end
+
+  def send_admin_mail
+    UserMailer.send_welcome_email(self).deliver_later
   end
 end
