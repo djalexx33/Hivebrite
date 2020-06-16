@@ -1,7 +1,4 @@
 class CustomAttribute < ApplicationRecord
-  belongs_to :user
-  belongs_to :event
-  belongs_to :registration
   belongs_to :customizable, polymorphic: true
 
   def value

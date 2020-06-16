@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :registrations
   has_many :events, through: :registrations
   has_many :custom_attributes, as: :customizable
-  has_one :profile, as: :profileable, dependent: :destroy
 
   after_initialize :set_default_role, if: :new_record?
 
