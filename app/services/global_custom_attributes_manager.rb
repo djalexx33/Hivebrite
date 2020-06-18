@@ -1,13 +1,11 @@
-class GlobalCustomAttributesManager
-  def initialize(user_id:)
-    @user = User.find(user_id)
+class AdminCustomAttributesManager
+  def initialize(community_id)
+    Community.find(community_id)
   end
 
   def call
     if @user.admin?
-      create_custom_attributes
-      update_custom_attributes
-      delete_custom_attributes
+      community
     end
   end
 

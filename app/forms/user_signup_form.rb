@@ -3,6 +3,13 @@ class UserSignupForm
   attr_accessor :firstname, :lastname, :email, :password, :role
   validates :firstname, :lastname, :email, :password, :role, presence: true
 
+  def initialize(community_id)
+    Community.find(community_id)
+    admin_custom_attributes.each(
+      self.class.send(:attr_accessor, name)
+    )
+  end
+
   def save
     valid? && user.save
   end
