@@ -5,7 +5,7 @@ class UserSignupForm
 
   def initialize(community_id)
     Community.find(community_id)
-    admin_custom_attributes.each(
+    admin_custom_attribute.each(
       self.class.send(:attr_accessor, name)
     )
   end
